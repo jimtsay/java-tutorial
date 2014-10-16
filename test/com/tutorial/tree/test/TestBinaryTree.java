@@ -14,6 +14,15 @@ public class TestBinaryTree {
 	
 	@Before
 	public void setUp() throws Exception {
+		//                A
+		//             /     \
+		//           B         C
+		//          /  \     /   \
+		//         D    E   F     G
+		//             /           \
+		//            H             I
+		//                           \
+		//                            J
 		root = new BinaryTreeNode("A");
 		root.leftChild = new BinaryTreeNode("B");
 		root.rightChild = new BinaryTreeNode("C");
@@ -38,6 +47,13 @@ public class TestBinaryTree {
 		int actual = BinaryTree.getMaxDepth(root);
 		int expecting = 5;
 		assertEquals("Testing BinaryTree.getMaxDepth()", expecting, actual);
+	}	
+	
+	@Test
+	public void testGetSameLevelNodes() {
+		BinaryTreeNode[] actual = BinaryTree.getSameLevelNodes(root, 3);
+		BinaryTreeNode[] expecting = new BinaryTreeNode[]{root.leftChild.rightChild.leftChild, root.rightChild.rightChild.rightChild};
+		assertArrayEquals("Testing BinaryTree.getSameLevelNodes()", expecting, actual);
 	}	
 
 }
