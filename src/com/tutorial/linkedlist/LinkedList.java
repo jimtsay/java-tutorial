@@ -34,5 +34,20 @@ public class LinkedList {
 			fast = fast.next.next;
 		}
 		return slow;
-	}	
+	}
+	
+	public static boolean findLoop(LinkedListNode head) {
+		if (head == null)
+			return false;
+		
+		LinkedListNode slow = head;
+		LinkedListNode fast = head;	
+		while (slow.next != null && fast.next != null && fast.next.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if (slow == fast)
+				return true;
+		}
+		return false;
+	}
 }

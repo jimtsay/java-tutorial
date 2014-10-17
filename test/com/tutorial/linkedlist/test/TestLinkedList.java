@@ -37,4 +37,18 @@ public class TestLinkedList {
 		assertEquals("Testing findMiddle()", expecting, actual);
 	}	
 
+	@Test
+	public void testFindLoopNoLoop() {
+		Boolean actual = LinkedList.findLoop(head);
+		Boolean expecting = false;
+		assertEquals("Testing findLoop()", expecting, actual);
+	}
+	
+	@Test
+	public void testFindLoop() {
+		head.next.next.next.next.next.next.next = head.next;
+		Boolean actual = LinkedList.findLoop(head);
+		Boolean expecting = true;
+		assertEquals("Testing findLoop()", expecting, actual);
+	}	
 }
